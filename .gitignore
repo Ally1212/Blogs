@@ -15,7 +15,8 @@ pnpm-debug.log*
 
 # environment variables
 .env
-.env.production
+.env.*
+!.env.example
 
 # macOS-specific files
 .DS_Store
@@ -23,6 +24,17 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# pagefind
+# vscode
+.vscode/
 
+# pagefind
 public/pagefind
+
+# editor
+*.swp
+*.swo
+*~
+
+# misc
+.cache/
+*.local

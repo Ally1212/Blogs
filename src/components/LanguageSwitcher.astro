@@ -1,0 +1,55 @@
+---
+import IconLanguage from "@/assets/icons/IconLanguage.svg";
+import { translations, defaultLocale } from "@/i18n";
+
+const t = translations[defaultLocale];
+---
+
+<button
+  id="lang-btn"
+  class="focus-outline relative size-12 p-4 sm:size-8 hover:[&>svg]:stroke-accent"
+  title={t["lang.switch"]}
+  aria-label="Switch language"
+>
+  <IconLanguage class="absolute top-[50%] left-[50%] -translate-[50%]" />
+</button>
+
+<script>
+  import { translations, defaultLocale, type Locale, type TranslationKey } from "@/i18n/translations";
+
+  function getLocale(): Locale {
+    const stored = localStorage.getItem("locale");
+    if (stored === "en" || stored === "zh") return stored;
+    return defaultLocale;
+  }
+
+  function updatePageTranslations(locale: Locale): void {
+    const elements = document.querySelectorAll("[data-i18n]");
+    elements.forEach(el => {
+      const key = el.getAttribute("data-i18n") as TranslationKey;
+      if (key && translations[locale][key]) {
+        el.textContent = translations[locale][key];
+      }
+    });
+    document.documentElement.lang = locale === "zh" ? "zh-CN" : "en";
+  }
+
+  function initLangSwitch() {
+    const langBtn = document.getElementById("lang-btn");
+    if (!langBtn) return;
+
+    // Initialize translations on page load
+    const currentLocale = getLocale();
+    updatePageTranslations(currentLocale);
+
+    langBtn.addEventListener("click", () => {
+      const locale = getLocale();
+      const newLocale = locale === "zh" ? "en" : "zh";
+      localStorage.setItem("locale", newLocale);
+      updatePageTranslations(newLocale);
+    });
+  }
+
+  initLangSwitch();
+  document.addEventListener("astro:after-swap", initLangSwitch);
+</script>
