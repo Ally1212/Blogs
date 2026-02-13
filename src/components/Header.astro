@@ -60,7 +60,7 @@ const isActive = (path: string) => {
       <button
         id="menu-btn"
         class="focus-outline self-end p-2 sm:hidden"
-        aria-label="Open Menu"
+        aria-label="打开菜单"
         aria-expanded="false"
         aria-controls="menu-items"
       >
@@ -103,7 +103,7 @@ const isActive = (path: string) => {
                   },
                 ]}
                 title={t["nav.archives"]}
-                aria-label="archives"
+                aria-label="归档"
               >
                 <IconArchive class="hidden sm:inline-block" />
                 <span class="sm:sr-only" data-i18n="nav.archives">{t["nav.archives"]}</span>
@@ -119,7 +119,7 @@ const isActive = (path: string) => {
               { "[&>svg]:stroke-accent": isActive("/search") },
             ]}
             title={t["nav.search"]}
-            aria-label="search"
+            aria-label="搜索"
           >
             <IconSearch />
             <span class="sr-only" data-i18n="nav.search">{t["nav.search"]}</span>
@@ -162,7 +162,7 @@ const isActive = (path: string) => {
       const openMenu = menuBtn.getAttribute("aria-expanded") === "true";
 
       menuBtn.setAttribute("aria-expanded", openMenu ? "false" : "true");
-      menuBtn.setAttribute("aria-label", openMenu ? "Open Menu" : "Close Menu");
+      menuBtn.setAttribute("aria-label", openMenu ? "打开菜单" : "关闭菜单");
 
       menuItems.classList.toggle("hidden");
       menuIcon.classList.toggle("hidden");
