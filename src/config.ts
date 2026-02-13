@@ -3,7 +3,7 @@ export const SITE = {
   author: "Your Name",
   profile: "https://example.com/",
   desc: "我的个人博客",
-  title: "我的博客",
+  title: "LizerBubble",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,
