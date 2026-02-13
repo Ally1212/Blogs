@@ -1,6 +1,6 @@
 ---
 author: Liz
-pubDatetime: 2026-02-13T08:00:00.000Z
+pubDatetime: 2026-02-13T06:30:00.000Z
 title: 我为独立开发者开发了一个产品工具
 featured: true
 tags:
