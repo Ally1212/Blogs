@@ -8,37 +8,10 @@ import { SITE } from "@/config";
 import type { TimelineItem } from "@/components/Timeline.astro";
 
 const experiences: TimelineItem[] = [
-  {
-    date: "2024.09 — 至今",
-    title: "全栈工程师",
-    company: "AI 初创公司",
-    description:
-      "以全栈开发身份经历 AI 浪潮的每一个节点：从 Cursor 初版发布，到 Dify 工作流编排，再到大模型生态爆发。用 AI 重新定义开发方式，Claude Code 是主力工具。",
-    tags: ["全栈开发", "AI Engineering", "Claude Code"],
-  },
-  {
-    date: "2023 — 2024",
-    title: "Java 后端工程师",
-    company: "千里马网信",
-    description:
-      "深耕 Java 后端一年，积累了扎实的工程能力。拿到转正 Offer 时选择放弃，决定投身 AI 浪潮。",
-    tags: ["Java", "后端开发"],
-  },
-  {
-    date: "2022 — 2023",
-    title: "实习工程师",
-    company: "航天领域",
-    description:
-      "大三进入航天领域实习，快速理解业务后选择走出舒适区，追求更大的成长空间。",
-    tags: ["实习", "航天"],
-  },
-  {
-    date: "2020 — 2024",
-    title: "计算机科学与技术",
-    company: "本科",
-    description: "2024 届计算机科学与技术专业毕业。",
-    tags: ["CS"],
-  },
+  { date: "2024.09 — 至今", title: "全栈工程师", company: "AI 初创公司" },
+  { date: "2023 — 2024", title: "Java 后端工程师", company: "千里马网信" },
+  { date: "2022 — 2023", title: "实习工程师", company: "航天领域" },
+  { date: "2020 — 2024", title: "计算机科学与技术", company: "本科" },
 ];
 ---
 
@@ -46,36 +19,39 @@ const experiences: TimelineItem[] = [
   <Header />
   <Breadcrumb />
   <main id="main-content" class="app-layout">
-    <section id="about" class="mb-28 max-w-app">
+    <section id="about" class="app-prose mb-28 max-w-app prose-img:border-0">
       <h1 class="text-2xl tracking-wider sm:text-3xl">关于</h1>
 
-      <div class="mt-8 app-prose prose-img:border-0">
-        <h2>Liz | 全栈工程师 · AI 实践者</h2>
-        <p>
-          2024 届计算机科学与技术专业，一个用代码和 AI 创造价值的工程师。
-        </p>
-        <blockquote>
-          <p>我的选择始终遵循一个原则：去浪潮的中心，而不是岸边。</p>
-        </blockquote>
-      </div>
+      <h2>Liz | 全栈工程师 · AI 实践者</h2>
+      <p>2024 届计算机科学与技术专业，一个用代码和 AI 创造价值的工程师。</p>
+      <p>
+        大三时进入航天领域实习，快速理解业务后选择走出舒适区。随后在千里马网信深耕
+        Java
+        后端一年，积累了扎实的工程能力。当拿到转正 Offer
+        的那一刻，我选择了放弃——因为 AI 的浪潮已经来了，我不想做旁观者。
+      </p>
+      <p>
+        2024 年 9 月加入一家 AI
+        初创公司，以全栈开发的身份经历了这轮 AI 浪潮的每一个节点：从 Cursor
+        初版发布，到 Dify 的工作流编排流行，再到大模型生态的爆发。我不只是在用
+        AI，而是在用 AI 重新定义开发方式本身。现在，Claude Code
+        是我的主力工具，我坚信 AI-native 的编程方式是软件工程的终局形态。
+      </p>
+      <blockquote>
+        <p>我的选择始终遵循一个原则：去浪潮的中心，而不是岸边。</p>
+      </blockquote>
 
-      <div class="mt-12">
-        <h2
-          class="mb-8 text-xl font-semibold tracking-wide text-foreground sm:text-2xl"
-        >
-          工作经历
-        </h2>
-        <Timeline items={experiences} />
-      </div>
+      <hr />
 
-      <div class="mt-4 app-prose">
-        <p>
-          <code>全栈开发</code>{" "}
-          <code>AI Engineering</code>{" "}
-          <code>Claude Code</code>{" "}
-          <code>从 0 到 1</code>
-        </p>
-      </div>
+      <h2>工作经历</h2>
+      <Timeline items={experiences} />
+
+      <p>
+        <code>全栈开发</code>{" "}
+        <code>AI Engineering</code>{" "}
+        <code>Claude Code</code>{" "}
+        <code>从 0 到 1</code>
+      </p>
     </section>
   </main>
   <Footer />

@@ -6,9 +6,10 @@ import Datetime from "./Datetime.astro";
 
 type Props = {
   variant?: "h2" | "h3";
+  compact?: boolean;
 } & CollectionEntry<"blog">;
 
-const { variant: Heading = "h2", id, data, filePath } = Astro.props;
+const { variant: Heading = "h2", compact = false, id, data, filePath } = Astro.props;
 
 const { title, description, ...props } = data;
 ---
@@ -29,5 +30,5 @@ const { title, description, ...props } = data;
     </Heading>
   </a>
   <Datetime {...props} />
-  <p>{description}</p>
+  {!compact && <p>{description}</p>}
 </li>

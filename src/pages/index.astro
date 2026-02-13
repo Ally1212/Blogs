@@ -67,7 +67,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
           <h2 class="text-2xl font-semibold tracking-wide">精选文章</h2>
           <ul>
             {featuredPosts.map(data => (
-              <Card variant="h3" {...data} />
+              <Card variant="h3" compact {...data} />
             ))}
           </ul>
         </section>
