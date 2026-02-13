@@ -1,0 +1,137 @@
+---
+export interface TimelineItem {
+  date: string;
+  title: string;
+  company: string;
+  description: string;
+  tags?: string[];
+}
+
+interface Props {
+  items: TimelineItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="timeline">
+  {
+    items.map((item, index) => (
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <div class="timeline-dot" />
+          {index < items.length - 1 && <div class="timeline-line" />}
+        </div>
+        <div class="timeline-content">
+          <span class="timeline-date">{item.date}</span>
+          <h3 class="timeline-title">{item.title}</h3>
+          <p class="timeline-company">{item.company}</p>
+          <p class="timeline-desc">{item.description}</p>
+          {item.tags && (
+            <div class="timeline-tags">
+              {item.tags.map(tag => (
+                <span class="timeline-tag">{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .timeline {
+    position: relative;
+    padding-left: 0;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 1rem;
+  }
+
+  .timeline-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background-color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 0.35rem;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .timeline-item:hover .timeline-dot {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+
+  .timeline-line {
+    width: 2px;
+    flex-grow: 1;
+    background: linear-gradient(
+      to bottom,
+      var(--accent),
+      color-mix(in srgb, var(--accent) 20%, transparent)
+    );
+    margin-top: 0.5rem;
+  }
+
+  .timeline-content {
+    padding-bottom: 2.5rem;
+  }
+
+  .timeline-date {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0.25rem 0 0.15rem;
+    color: var(--foreground);
+  }
+
+  .timeline-company {
+    font-size: 0.9rem;
+    color: color-mix(in srgb, var(--foreground) 60%, transparent);
+    margin: 0 0 0.5rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: color-mix(in srgb, var(--foreground) 80%, transparent);
+    margin: 0;
+  }
+
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+
+  .timeline-tag {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 9999px;
+    background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+    color: var(--accent);
+    font-weight: 500;
+  }
+</style>
